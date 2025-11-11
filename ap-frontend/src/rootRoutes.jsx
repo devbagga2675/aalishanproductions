@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { Navigate } from "react-router-dom";
 
 import Loader from "./components/Loader"; 
+import Team from "./pages/Team";
 
 // --- Lazy-Loaded Components ---
 const Layout = lazy(() => import("./components/Layout")); 
@@ -22,6 +23,14 @@ const rootRoutes = [
         element: (
           <Suspense fallback={<Loader />}>
             <LandingPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "team",
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Team />
           </Suspense>
         ),
       },

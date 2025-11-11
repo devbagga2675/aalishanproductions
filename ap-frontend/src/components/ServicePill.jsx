@@ -11,6 +11,8 @@ const ServicePill = ({ text }) => {
         rounded-full           /* Fully rounded corners */
         text-[var(--color-dark-text-primary)] /* Text color is your primary text white/off-white */
         montserrat-medium      /* Apply Montserrat font */
+        border
+        border-[var(--color-dark-border)]
         text-sm                /* Smaller text size for a pill */
         tracking-wide          /* Slightly wider letter spacing */
         select-none            /* Prevent text selection */

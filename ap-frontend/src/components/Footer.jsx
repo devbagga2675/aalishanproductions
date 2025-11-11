@@ -159,7 +159,6 @@ const Footer = () => {
           "
             ></div>
 
-            {/* Credit 2: Designed by */}
             <p
               className="
             text-sm font-medium 
@@ -169,7 +168,7 @@ const Footer = () => {
             >
               Designed and developed by{" "}
               <a
-                href="https://devbagga-portfolio.vercel.app" /* <-- Replace this URL */
+                href="https://devbagga-portfolio.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline font-semibold transition-colors hover:text-white"

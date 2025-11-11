@@ -6,7 +6,10 @@ const SectionTitle = ({ children, align }) => {
       className={`
               montserrat-regular
               tracking-tight
-              bg-gradient-to-b from-[var(--color-dark-text-primary)] to-[var(--color-dark-text-secondary)]
+              
+              /* --- THIS IS THE NEW GRADIENT --- */
+              bg-gradient-to-b from-[var(--color-dark-text-primary)] to-[var(--color-dark-accent-primary)]
+
               bg-clip-text text-transparent
               text-4xl sm:text-5xl lg:text-6xl pb-4 text-${align}
     `}

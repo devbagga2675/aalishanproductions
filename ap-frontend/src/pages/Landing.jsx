@@ -23,60 +23,7 @@ import ServiceCard from "../components/ServiceCard";
 import Footer from "../components/Footer";
 // ...
 
-const StaticNavbar = () => {
-  return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-10 bg-[var(--color-dark-bg-primary)]/30
-        backdrop-blur-md
-        border-b-2 border-[var(--color-dark-border)]"
-    >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-24 items-center justify-between">
-          <div className="flex-shrink-0">
-            <h1
-              className="
-              font-thunder-bold-lc 
-              text-[var(--color-dark-text-primary)]
-              text-xl sm:text-2xl 
-              font-bold 
-            "
-            >
-              AALISHAN PRODUCTIONS
-            </h1>
-          </div>
-          <div className="hidden sm:block montserrat-regular">
-            <div className="flex items-center gap-6">
-              <a
-                href="#"
-                className="text-sm font-medium text-[var(--color-dark-text-secondary)] transition hover:text-[var(--color-dark-text-primary)]"
-              >
-                Home
-              </a>
-              <a
-                href="#"
-                className="text-sm font-medium text-[var(--color-dark-text-secondary)] transition hover:text-[var(--color-dark-text-primary)]"
-              >
-                YT Content
-              </a>
-              <a
-                href="#"
-                className="text-sm font-medium text-[var(--color-dark-text-secondary)] transition hover:text-[var(--color-dark-text-primary)]"
-              >
-                Social Media Content
-              </a>
-              <a
-                href="#"
-                className="text-sm font-medium text-[var(--color-dark-text-secondary)] transition hover:text-[var(--color-dark-text-primary)]"
-              >
-                The Team
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
-};
+
 
 const ContactCard = ({ icon: Icon, title, detail, onClick }) => (
   <div
@@ -135,7 +82,7 @@ export default function Landing() {
         }}
       /> */}
 
-      <StaticNavbar />
+      
 
       <main className="relative z-5 flex w-full items-center max-w-7xl px-4 sm:px-6 lg:px-8 py-16 min-h-screen">
         <div className="text-start w-full">
@@ -322,7 +269,6 @@ export default function Landing() {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 }
