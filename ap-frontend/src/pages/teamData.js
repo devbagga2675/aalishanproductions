@@ -1,37 +1,52 @@
+// src/teamData.js
 export const teamData = [
   {
     id: 1,
     name: "Dhairya Mehta",
-    designation: "Founder & Creative Director",
+    designation: "Business Head / Director",
     imageUrl:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&h=800&auto=format&fit=crop",
+      // Reusing original image URL for Dhairya Mehta
+      // "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&h=800&auto=format&fit=crop",
+      "public/assets/teamImage_dhairyaMehta.jpg",
+    roles: [
+      "Client Communication",
+      "Strategy & Ideas",
+      "Meetings & Pitches",
+      "Project Planning",
+      "Creative Direction",
+      "Business Development",
+      "Premium Client Experience",
+    ],
   },
   {
     id: 2,
     name: "Pravin Prajapati",
-    designation: "Lead Videographer",
+    designation: "Operations & Creative Lead",
     imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&h=800&auto=format&fit=crop",
+      // Using a new relevant image for a Creative/Operations Lead
+      "public/assets/teamImage_pravinPrajapati.jpg",
+    roles: [
+      "Shooting & Execution",
+      "Editing & Post-Production",
+      "Creative Ideation",
+      "Visual Direction",
+      "Deliverables Management",
+      "Production Workflow",
+    ],
   },
   {
-    id: 4,
+    id: 3,
     name: "Dev Bagga",
-    designation: "Web Developer",
+    designation: "Full-Stack Developer",
     imageUrl:
-      "https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=600&h=800&auto=format&fit=crop",
+      // Using a new relevant image for a Developer
+      "public/assets/teamImage_devBagga.jpg",
+    roles: [
+      "Website Development",
+      "Application Development",
+      "UI/UX Design",
+      "Backend & Frontend Engineering",
+      "Technical Backbone",
+    ],
   },
-  // {
-  //   id: 5,
-  //   name: "Sarah Chen",
-  //   designation: "Client Relations",
-  //   imageUrl:
-  //     "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600&h=800&auto=format&fit=crop",
-  // },
-  // {
-  //   id: 6,
-  //   name: "David Kim",
-  //   designation: "Junior Editor",
-  //   imageUrl:
-  //     "https://images.unsplash.com/photo-1530268728604-e822d4b0f7a6?q=80&w=600&h=800&auto=format&fit=crop",
-  // },
 ];

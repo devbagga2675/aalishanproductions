@@ -15,53 +15,17 @@ import {
   Mail, // For email address
   MapPin,
 } from "lucide-react";
+import { services } from "./services";
 import placeholder from "../assets/placeholder.png";
 import ServicePill from "../components/ServicePill";
 import FeaturePill from "../components/FeaturePill";
 import SectionTitle from "../components/SectionTitle";
 import ServiceCard from "../components/ServiceCard";
+import {ContactCard} from "../components/ContactCard";
 import Footer from "../components/Footer";
 // ...
 
 
-
-const ContactCard = ({ icon: Icon, title, detail, onClick }) => (
-  <div
-    onClick={onClick}
-    className={`
-      flex items-center gap-4 
-      rounded-xl border border-[var(--color-dark-border)] 
-      p-4 md:p-6 
-      shadow-sm
-      transition-all duration-300 ease-in-out /* Added for smooth hover */
-      
-      ${
-        /* Conditionally add hover effects and cursor */
-        onClick
-          ? "cursor-pointer hover:scale-[1.02] hover:shadow-lg hover:border-[var(--color-dark-accent-primary)] hover:bg-[var(--color-dark-bg-secondary)]"
-          : "cursor-default" /* No effects if not clickable */
-      }
-    `}
-  >
-    <div className="flex-shrink-0">
-      <Icon className="w-7 h-7 text-[var(--color-dark-accent-primary)]" />
-    </div>
-    <div>
-      <h4
-        className="
-        montserrat-medium text-lg 
-        text-[var(--color-dark-text-primary)] 
-        mb-1
-      "
-      >
-        {title}
-      </h4>
-      <p className="text-base text-[var(--color-dark-text-secondary)]">
-        {detail}
-      </p>
-    </div>
-  </div>
-);
 
 export default function Landing() {
   return (
@@ -81,8 +45,6 @@ export default function Landing() {
           backgroundRepeat: "no-repeat",
         }}
       /> */}
-
-      
 
       <main className="relative z-5 flex w-full items-center max-w-7xl px-4 sm:px-6 lg:px-8 py-16 min-h-screen">
         <div className="text-start w-full">
@@ -197,7 +159,16 @@ export default function Landing() {
 
         {/* Responsive 2-column grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
-          <ServiceCard
+          {services.map((service, id) => (
+            <ServiceCard
+              key={id}
+              title={service.serviceTitle}
+              subtitle={service.serviceSubtitle}
+              imageUrl={service.serviceImageurl || placeholder}
+              path={service.servicePath}
+            />
+          ))}
+          {/* <ServiceCard
             title="Social Media Videos"
             subtitle="Viral-ready clips for TikTok, Reels & Shorts."
             imageUrl={placeholder}
@@ -220,7 +191,7 @@ export default function Landing() {
             subtitle="High-conversion videos that showcase your product."
             imageUrl={placeholder}
             href="#"
-          />
+          /> */}
         </div>
       </section>
       <section className="relative z-5 w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-16 mt-24">

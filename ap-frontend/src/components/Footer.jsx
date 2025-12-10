@@ -2,6 +2,7 @@ import React from "react";
 import { Twitter, Linkedin, Instagram, Facebook, ArrowUp } from "lucide-react";
 // 1. Import your secondary button
 import { CtaButtonSecondary } from "./CtaButton";
+import SlideUpReveal from "./SlideUpReveal";
 
 // Internal component for styling footer links
 const FooterLink = ({ href, children }) => (
@@ -109,12 +110,13 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Column 3: Legal */}
+            {/* Column 3: Contact*/}
             <div>
-              <FooterTitle>Legal</FooterTitle>
+              <FooterTitle>Reach Out</FooterTitle>
               <div className="flex flex-col gap-3">
-                <FooterLink href="#">Privacy Policy</FooterLink>
-                <FooterLink href="#">Terms of Service</FooterLink>
+                <FooterLink href="#"><SlideUpReveal>aalishanproductions@info.mail</SlideUpReveal></FooterLink>
+                <FooterLink href="#"><SlideUpReveal>9924102675</SlideUpReveal></FooterLink>
+
               </div>
             </div>
           </div>

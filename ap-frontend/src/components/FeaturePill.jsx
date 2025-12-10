@@ -39,7 +39,6 @@ const FeaturePill = ({ icon: IconComponent, text }) => {
             group-hover:scale-105 
           "
         >
-          {/* Icon inside the solid background box */}
           <IconComponent className="w-6 h-6 text-[var(--color-dark-text-primary)]" /> {/* White icon */}
         </span>
       )}

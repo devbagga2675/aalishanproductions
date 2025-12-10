@@ -1,10 +1,13 @@
 import React from "react";
 import { MoveUpRight } from "lucide-react"; // We still need this for the arrow
+import { useNavigate } from "react-router-dom";
 
-const ServiceCard = ({ title, subtitle, imageUrl, href }) => {
+const ServiceCard = ({ title, subtitle, imageUrl, path }) => {
+
+  const goTo = useNavigate()
   return (
-    <a
-      href={href}
+    <div
+      onClick={() => goTo(path)}
       className="
         group 
         relative 
@@ -92,7 +95,7 @@ const ServiceCard = ({ title, subtitle, imageUrl, href }) => {
           {subtitle}
         </p>
       </div>
-    </a>
+    </div>
   );
 };
 

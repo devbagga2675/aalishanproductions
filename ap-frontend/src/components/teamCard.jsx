@@ -4,47 +4,97 @@ const TeamCard = ({ member }) => {
   return (
     <div
       className="
-        rounded-xl 
-        overflow-hidden 
+        relative
+        aspect-[3/4]
+        w-full
+        
+        overflow-hidden
         shadow-lg
+        group
         bg-[var(--color-dark-bg-secondary)]
       "
     >
-      {/* Image container with 3:4 aspect ratio */}
+      {/* Background Image with scale effect on hover */}
       <div
         className="
-          aspect-[3/4] 
-          w-full 
-          bg-cover 
-          bg-center 
-          bg-[var(--color-dark-border)] /* Fallback bg color */
+          absolute
+          inset-0
+          bg-cover
+          bg-center
+          transition-transform
+          duration-500
+          group-hover:scale-105
         "
         style={{ backgroundImage: `url(${member.imageUrl})` }}
       >
-        {/* Image is applied via background */}
+        {/* The image itself serves as the background */}
       </div>
 
-      {/* Text Content */}
-      <div className="p-4">
-        <h3
-          className="
-            text-2xl 
-            tracking-tight
-            monsterrat-regular
-            text-[var(--color-dark-text-primary)]
-            mb-0.5
-          "
-        >
-          {member.name}
-        </h3>
-        <p
-          className="
-            inter-regular
-            text-[var(--color-dark-text-secondary)]
-          "
-        >
-          {member.designation}
-        </p>
+      {/* FIXED OVERLAY:
+         - Removed backdrop-blur (fixes the foggy face issue)
+         - Adjusted gradient to be solid black at the very bottom for text contrast
+         - Adjusted padding to sit lower
+      */}
+      <div
+        className="
+          absolute
+          bottom-0
+          left-0
+          right-0
+          p-6
+          pb-8
+          pt-24 /* Gradient start point */
+          bg-gradient-to-t from-black via-black/80 o-transparent      
+        "
+      >
+        {/* Name and Designation */}
+        <div className="mb-4">
+          <h3
+            className="
+              text-2xl
+              font-bold
+              text-white
+              mb-1
+              montserrat-regular
+              tracking-wide
+            "
+          >
+            {member.name}
+          </h3>
+          <p
+            className="
+              text-sm
+              font-medium
+              text-gray-300
+              montserrat-regular
+            "
+          >
+            {member.designation}
+          </p>
+        </div>
+
+        {/* Roles List displayed as tags */}
+        <ul className="hidden md:flex flex-wrap gap-2">
+          {member.roles &&
+            member.roles.map((role, index) => (
+              <li
+                key={index}
+                className="
+                text-[11px]
+                font-semibold
+                text-white
+                bg-white/10
+                border border-white/10
+                px-3
+                py-1
+                rounded-full
+                montserrat-medium
+              "
+              >
+                {role}
+              </li>
+            ))}
+        </ul>
       </div>
     </div>
   );
