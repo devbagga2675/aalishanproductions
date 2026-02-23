@@ -21,11 +21,9 @@ import ServicePill from "../components/ServicePill";
 import FeaturePill from "../components/FeaturePill";
 import SectionTitle from "../components/SectionTitle";
 import ServiceCard from "../components/ServiceCard";
-import {ContactCard} from "../components/ContactCard";
+import { ContactCard } from "../components/ContactCard";
 import Footer from "../components/Footer";
 // ...
-
-
 
 export default function Landing() {
   return (
@@ -46,16 +44,27 @@ export default function Landing() {
         }}
       /> */}
 
-      <main className="relative z-5 flex w-full items-center max-w-7xl px-4 sm:px-6 lg:px-8 py-16 min-h-screen">
+      <main
+        className="
+          relative z-5 flex flex-col lg:flex-row
+          w-full items-center justify-center
+          max-w-7xl
+          px-4 sm:px-6 lg:px-8
+          py-28 lg:py-32
+          min-h-[95vh] lg:min-h-screen
+        "
+      >
         <div className="text-start w-full">
           <h1
             className="
-              mb-4
-              montserrat-regular
+              mb-6
               tracking-tight
-              bg-gradient-to-b from-[var(--color-dark-text-primary)] to-[var(--color-dark-text-secondary)]
+              bg-gradient-to-b
+              from-[var(--color-dark-text-primary)]
+              to-[var(--color-dark-text-secondary)]
               bg-clip-text text-transparent
-              text-4xl sm:text-5xl lg:text-6xl
+              text-3xl md:text-5xl lg:text-6xl
+              leading-tight sm:leading-tight
             "
           >
             <span>Stop Waiting.</span>
@@ -82,7 +91,7 @@ export default function Landing() {
             is masterfully edited to perform.
           </p>
 
-          <div className="mt-4 flex gap-4 flex-wrap">
+          <div className="mt-6 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <CtaButton href="#" title="Get in touch" Icon={MoveUpRight} />
             <CtaButtonSecondary
               href="#"
@@ -91,12 +100,19 @@ export default function Landing() {
             />
           </div>
         </div>
-        <div className="absolute bottom-10 left-0 right-0 z-5 text-center text-sm font-medium text-[var(--color-dark-text-secondary)]">
+        <div className="absolute bottom-6 sm:bottom-10 left-0 right-0 z-5 text-center text-sm font-medium text-[var(--color-dark-text-secondary)]">
           (Scroll)
         </div>
       </main>
 
-      <section className="min-h-screen relative z-5 w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-16 text-center">
+      <section
+        className="
+          relative z-5 w-full max-w-7xl
+          px-4 sm:px-6 lg:px-8
+          py-20 sm:py-24 lg:py-32
+          text-center
+        "
+      >
         <SectionTitle align={"center"}>
           Crafting professional video content designed for the digital screen.
         </SectionTitle>
@@ -158,7 +174,16 @@ export default function Landing() {
         </p>
 
         {/* Responsive 2-column grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
+        <div
+          className="
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-3
+            xl:grid-cols-4
+            gap-6 sm:gap-8
+          "
+        >
           {services.map((service, id) => (
             <ServiceCard
               key={id}
@@ -195,10 +220,10 @@ export default function Landing() {
         </div>
       </section>
       <section className="relative z-5 w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-16 mt-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column: Title and Description */}
           <div className="text-center md:text-left">
-            <SectionTitle align={"start"}>
+            <SectionTitle align={"center"} classname={"lg:text-start"}>
               Your Vision. Our Production Mastery.
             </SectionTitle>
             <p
@@ -217,7 +242,14 @@ export default function Landing() {
           </div>
 
           {/* Right Column: Contact Cards */}
-          <div className="flex flex-col gap-6 w-full max-w-md mx-auto">
+          <div
+            className="
+              flex flex-col gap-6
+              w-full
+              max-w-md
+              mx-auto
+            "
+          >
             <ContactCard
               icon={Phone}
               title="Call Us"
@@ -227,16 +259,16 @@ export default function Landing() {
             <ContactCard
               icon={Mail}
               title="Email Us"
-              detail="info@aalishanproductions.com"
+              detail="info@aalishaanproductions.com"
               onClick={() =>
-                (window.location.href = "mailto:info@aalishanproductions.com")
+                (window.location.href = "mailto:info@aalishaanproductions.com")
               }
             />
-            <ContactCard
+            {/* <ContactCard
               icon={MapPin}
               title="Our Location"
               detail="123 Creative Street, Studio City, CA 91604"
-            />
+            /> */}
           </div>
         </div>
       </section>

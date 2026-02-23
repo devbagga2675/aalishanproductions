@@ -16,7 +16,7 @@ const FeaturePill = ({ icon: IconComponent, text }) => {
         
         text-[var(--color-dark-text-primary)] 
         montserrat-medium
-        text-lg               
+        text-xs md:text-sm              
         whitespace-nowrap     
         shadow-md             
         transition-all duration-300 ease-in-out

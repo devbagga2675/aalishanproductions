@@ -4,7 +4,7 @@ const ServiceDetailCard = ({ title, subtext, Icon }) => {
   return (
     <div
       className="
-        h-70
+        h-72 max-w-sm
         group relative flex flex-col justify-between p-6 
         rounded-2xl border border-2 border-[var(--color-dark-border)] 
         bg-gradient-to-br from-[var(--color-dark-bg-secondary)] to-[var(--color-dark-bg-primary)] 
@@ -17,7 +17,7 @@ const ServiceDetailCard = ({ title, subtext, Icon }) => {
       <div
         className="
         aspect-square
-          mb-5 inline-flex h-12 w-12 items-center justify-center 
+          mb-3 inline-flex h-12 w-12 items-center justify-center 
           rounded-xl border border-2 border-[var(--color-dark-border)] 
           bg-[var(--color-dark-bg-primary)] 
           text-[var(--color-dark-accent-primary)]
@@ -29,7 +29,7 @@ const ServiceDetailCard = ({ title, subtext, Icon }) => {
 
       {/* Title */}
       <div className="flex flex-col">
-        <h3 className="mb-3 text-xl montserrat-semibold tracking-tight text-[var(--color-dark-text-primary)] ">
+        <h3 className="mb-2 text-xl montserrat-semibold tracking-tight text-[var(--color-dark-text-primary)] ">
           {title}
         </h3>
         {/* Subtext */}

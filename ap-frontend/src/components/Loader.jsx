@@ -1,47 +1,42 @@
-// Loader.jsx
 import React from 'react';
-/**
- * A minimalistic, black and white three-dot loader using Tailwind CSS 
- * and inline styles for custom animation delays.
- */
-const Loader = ({ loadingText = 'Saving Changes' }) => {
+
+const Loader = ({ loadingText = 'Loading...' }) => {
   return (
-    // Overlay: Fixed, semi-transparent white backdrop
-    <div 
-      className="fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-90 transition-opacity duration-300"
-    >
-      <div className="flex flex-col items-center space-y-4">
+    // Overlay: Solid dark background with a very subtle blur for a polished feel
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[var(--color-dark-bg-primary)]/95 backdrop-blur-sm transition-opacity duration-300">
+      
+      <div className="flex flex-col items-center space-y-5">
         
-        {/* Loader Container */}
-        <div className="flex space-x-2">
-          {/* Dot 1 */}
-          <div 
-            className="w-2 h-2 rounded-full bg-gray-800 animate-pulse"
-            style={{ animationDelay: '0s' }}
-          ></div>
+        {/* Elegant SVG Spinner */}
+        <svg 
+          className="w-10 h-10 animate-spin" 
+          xmlns="http://www.w3.org/2000/svg" 
+          fill="none" 
+          viewBox="0 0 24 24"
+        >
+          {/* Subtle Background Track */}
+          <circle 
+            className="stroke-[var(--color-dark-border)]" 
+            cx="12" 
+            cy="12" 
+            r="10" 
+            strokeWidth="3"
+          ></circle>
+          
+          {/* Active Spinning Indicator */}
+          <path 
+            className="fill-[var(--color-dark-accent-primary)]" 
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          ></path>
+        </svg>
 
-          {/* Dot 2 */}
-          <div 
-            className="w-2 h-2 rounded-full bg-gray-800 animate-pulse"
-            style={{ animationDelay: '0.2s' }}
-          ></div>
-
-          {/* Dot 3 */}
-          <div 
-            className="w-2 h-2 rounded-full bg-gray-800 animate-pulse"
-            style={{ animationDelay: '0.4s' }}
-          ></div>
-        </div>
-
-        {/* Loading Text */}
-        <p className="text-sm font-medium text-gray-700">
+        {/* Clean Typography */}
+        <p className="text-[var(--color-dark-text-primary)] montserrat-regular font-medium text-md text-nowrap tracking-wide animate-pulse">
           {loadingText}
-          <span className="animate-pulse ml-0.5">.</span>
-          <span className="animate-pulse" style={{ animationDelay: '0.2s' }}>.</span>
-          <span className="animate-pulse" style={{ animationDelay: '0.4s' }}>.</span>
         </p>
         
       </div>
+      
     </div>
   );
 };

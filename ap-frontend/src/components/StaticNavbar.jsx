@@ -2,17 +2,18 @@ import React, { useState, useRef } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { Popover, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Facebook, Instagram, ArrowUpRight } from "lucide-react";
 
 // Import your reusable component
-import SlideUpReveal from "./SlideUpReveal"; 
+import SlideUpReveal from "./SlideUpReveal";
 
 // Import the services data
 import { services } from "./../pages/services"; // Ensure this path matches your file structure
 
 export default function StaticNavbar() {
-  const baseLinkClasses = "text-base font-medium transition duration-300 ease-in-out cursor-pointer";
-  
+  const baseLinkClasses =
+    "text-base font-medium transition duration-300 ease-in-out cursor-pointer";
+
   const getNavLinkClasses = ({ isActive }) =>
     `text-sm font-medium transition flex items-center gap-1 ${
       isActive
@@ -54,52 +55,74 @@ export default function StaticNavbar() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex items-center justify-between h-full">
-          
           {/* Logo Section */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 flex gap-5 items-center ">
             <Link to="/">
               <h1
                 className="
                   font-thunder-bold-lc 
                   text-[var(--color-dark-text-primary)]
                   text-xl sm:text-2xl 
-                  font-bold tracking-wide
+                  font-bold tracking-wide  mt-1.5
                 "
               >
-                AALISHAN PRODUCTIONS
+                AALISHAAN PRODUCTIONS
               </h1>
             </Link>
+            <span className="h-10 bg-[var(--color-dark-border)] w-0.5"></span>
+            <div className="flex items-center gap-5">
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--color-dark-text-secondary)] transition-colors hover:text-[var(--color-dark-text-primary)]"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--color-dark-text-secondary)] transition-colors hover:text-[var(--color-dark-text-primary)]"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden sm:block montserrat-regular">
-            <div className="flex items-center gap-8">
-              
+          <div className="hidden sm:block montserrat-regular h-full">
+            <div className="flex items-stretch md:items-center justify-center gap-8 h-full">
               {/* === Link 1: Home === */}
               <NavLink
                 to="/"
                 end
-                className={({ isActive }) => `${getNavLinkClasses({ isActive })} group`}
+                className={({ isActive }) =>
+                  `${getNavLinkClasses({ isActive })} group flex items-center lg:h-fit px-2`
+                }
               >
                 <SlideUpReveal className={baseLinkClasses}>Home</SlideUpReveal>
               </NavLink>
 
               {/* === Link 2: Services Dropdown (On Hover) === */}
-              <Popover className="relative">
+              <Popover className="relative lg:h-fit ">
                 {({ open, close }) => (
                   <div
+                  className="lg:h-fit"
                     onMouseEnter={() => onHover(open, close)}
                     onMouseLeave={() => onLeave(open, close)}
                   >
                     <Popover.Button
                       id="services-menu-button"
                       className={`
-                        group inline-flex items-center gap-1 outline-none
+                        group flex items-center gap-1 lg:h-fit px-2 outline-none 
                         ${open ? "text-[var(--color-dark-text-primary)]" : "text-[var(--color-dark-text-secondary)]"}
                         hover:text-[var(--color-dark-text-primary)]
                       `}
                     >
-                      <SlideUpReveal className={baseLinkClasses}>Services</SlideUpReveal>
+                      <SlideUpReveal className={baseLinkClasses}>
+                        Services
+                      </SlideUpReveal>
                       <ChevronDown
                         className={`
                           h-4 w-4 transition-transform duration-200
@@ -123,36 +146,38 @@ export default function StaticNavbar() {
                       <Popover.Panel
                         static
                         className="
-                          absolute left-1/2 z-50 mt-4 w-screen max-w-xs -translate-x-1/2 transform px-2 sm:px-0
+                          absolute left-1/2 z-50 mt-4 w-screen max-w-sm -translate-x-1/2 transform px-2 sm:px-0
                         "
                       >
-                        <div 
+                        <div
                           className="
                             overflow-hidden rounded-xl shadow-2xl 
                             ring-1 ring-black ring-opacity-5
                             border border-[var(--color-dark-border)]
                           "
                         >
-                          <div className="relative grid gap-1 bg-[var(--color-dark-bg-secondary)] p-2">
+                          <div className="relative grid gap-1 bg-[var(--color-dark-bg-primary)] p-2 divide-y divide-[var(--color-dark-border)]">
                             {services.map((item) => (
                               <Link
                                 key={item.id}
                                 to={item.servicePath}
                                 onClick={() => close()} // Close menu on click
                                 className="
-                                  group flex items-start rounded-lg p-3 
-                                  transition duration-150 ease-in-out 
-                                  hover:bg-[var(--color-dark-bg-primary)]
+                                  group flex items-center justify-between p-3 
+                                  transition-all duration-300 ease-in-out
                                 "
                               >
                                 <div>
-                                  <p className="text-sm font-medium text-[var(--color-dark-text-primary)]">
+                                  <p className="text-sm font-medium text-[var(--color-dark-text-primary)] group-hover:underline">
                                     {item.serviceTitle}
                                   </p>
-                                  <p className="mt-1 text-xs text-[var(--color-dark-text-secondary)] line-clamp-1">
+                                  {/* <p className="mt-1 text-xs text-[var(--color-dark-text-secondary)] line-clamp-1">
                                     {item.serviceSubtitle}
-                                  </p>
+                                  </p> */}
                                 </div>
+
+                                {/* Sliding 45-degree arrow icon */}
+                                <ArrowUpRight className="w-5 h-5 text-[var(--color-dark-text-primary)] opacity-0 -translate-x-40 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0 " />
                               </Link>
                             ))}
                           </div>
@@ -166,11 +191,14 @@ export default function StaticNavbar() {
               {/* === Link 3: The Team === */}
               <NavLink
                 to="/team"
-                className={({ isActive }) => `${getNavLinkClasses({ isActive })} group`}
+                className={({ isActive }) =>
+                  `${getNavLinkClasses({ isActive })} group h-full lg:h-fit`
+                }
               >
-                <SlideUpReveal className={baseLinkClasses}>The Team</SlideUpReveal>
+                <SlideUpReveal className={baseLinkClasses}>
+                  The Team
+                </SlideUpReveal>
               </NavLink>
-
             </div>
           </div>
         </div>

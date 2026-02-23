@@ -11,12 +11,12 @@ const PhotoshootsPage = () => {
     heroPills: ["Services / Photography"],
 
     subServices: [
-      {
-        title: "Product Photography",
-        content:
-          "Clear, crisp, and creative shots of your products. We capture the details that matter, creating images perfect for e-commerce listings, catalogs, and advertising campaigns.",
-        icon: Camera, // Represents commercial photography
-      },
+      // {
+      //   title: "Product Photography",
+      //   content:
+      //     "Clear, crisp, and creative shots of your products. We capture the details that matter, creating images perfect for e-commerce listings, catalogs, and advertising campaigns.",
+      //   icon: Camera, // Represents commercial photography
+      // },
       {
         title: "Social Media-Ready Images",
         content:
@@ -29,19 +29,17 @@ const PhotoshootsPage = () => {
           "Tell your brand story with powerful imagery. We capture team portraits and candid moments, showcasing the human side of your business to build trust.", // 22 words
         icon: Users,
       },
-      {
-        title: "Event Photography",
-        content:
-          "Document your corporate events, launches, and celebrations. We ensure every important moment is preserved in high resolution for your PR and internal use.",
-        icon: CalendarCheck, // Represents events and documentation
-      },
+      // {
+      //   title: "Event Photography",
+      //   content:
+      //     "Document your corporate events, launches, and celebrations. We ensure every important moment is preserved in high resolution for your PR and internal use.",
+      //   icon: CalendarCheck, // Represents events and documentation
+      // },
     ],
 
     // Ideally, replace these with BTS videos of a photoshoot or a slideshow portfolio
-    youtubeVideos: [
-      "https://www.youtube.com/embed/5VuQREBijlI?si=yUaBzIKYDSge3Qr0", // Placeholder: Replace with actual photoshoot BTS if available
-      "https://www.youtube.com/embed/5VuQREBijlI?si=yUaBzIKYDSge3Qr0",
-    ],
+    featuredWork: {
+    },
 
     ctaTitle: "Need Professional Photography?",
     ctaLink: "#contact",

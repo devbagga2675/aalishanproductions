@@ -39,7 +39,7 @@
 //           className="
 //                     inter-regular
 //                     w-full
-//                     text-lg text-[var(--color-dark-text-secondary)] 
+//                     text-lg text-[var(--color-dark-text-secondary)]
 //                     md:text-xl mb-6 mx-auto max-w-3xl
 //                   "
 //         >
@@ -49,10 +49,10 @@
 //         {/* Features Grid */}
 //         {/* <div className="flex flex-wrap justify-center gap-6 mb-12">
 //           {features.map((feature, index) => (
-//             <FeaturePill 
-//               key={index} 
-//               icon={feature.icon || CheckCircle2} 
-//               text={feature.text} 
+//             <FeaturePill
+//               key={index}
+//               icon={feature.icon || CheckCircle2}
+//               text={feature.text}
 //             />
 //           ))}
 //         </div> */}
@@ -82,8 +82,8 @@
 //             <div
 //               key={index}
 //               className="
-//                 aspect-video w-full rounded-2xl overflow-hidden 
-//                 border border-[var(--color-dark-border)] 
+//                 aspect-video w-full rounded-2xl overflow-hidden
+//                 border border-[var(--color-dark-border)]
 //                 bg-[var(--color-dark-bg-secondary)] shadow-lg
 //               "
 //             >
@@ -117,7 +117,7 @@
 //                       text-lg md:text-xl
 //                       max-w-xl mx-0 md:mx-auto
 //                       text-[var(--color-dark-text-secondary)]
-//                       text-left 
+//                       text-left
 //                     "
 //             >
 //               Let's discuss your project's unique needs. We provide efficient,
@@ -137,9 +137,9 @@
 //             <ContactCard
 //               icon={Mail}
 //               title="Email Us"
-//               detail="info@aalishanproductions.com"
+//               detail="info@aalishaanproductions.com"
 //               onClick={() =>
-//                 (window.location.href = "mailto:info@aalishanproductions.com")
+//                 (window.location.href = "mailto:info@aalishaanproductions.com")
 //               }
 //             />
 //             <ContactCard
@@ -156,7 +156,6 @@
 
 // export default ServicePageTemplate;
 
-
 //alternate option for services
 
 import React from "react";
@@ -165,7 +164,7 @@ import ServicePill from "../components/ServicePill";
 import FeaturePill from "../components/FeaturePill";
 import Accordion from "../components/Accordion";
 import ServiceDetailCard from "../components/ServiceDetailCard"; // Added Import
-import { CtaButton } from "../components/CtaButton"; 
+import { CtaButton } from "../components/CtaButton";
 import { MoveUpRight, CheckCircle2 } from "lucide-react";
 import { ContactCard } from "../components/ContactCard";
 import { Phone, Mail, MapPin } from "lucide-react";
@@ -175,8 +174,8 @@ const ServicePageTemplate = ({
   heroDescription,
   heroPills, // Array of strings
   features, // Array of objects { icon, text }
-  subServices, // Array of objects { title, content, icon? } 
-  youtubeVideos, // Array of embed URLs
+  subServices, // Array of objects { title, content, icon? }
+  featuredWork, // Array of embed URLs
   ctaTitle = "Ready to Start?",
   ctaLink = "#contact",
 }) => {
@@ -223,7 +222,6 @@ const ServicePageTemplate = ({
       {/* 2. Sub-Services (Grid) Section */}
       <section className="relative z-5 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="">
-          
           {/* --- OLD ACCORDION (COMMENTED OUT) --- */}
           {/* <div>
             <Accordion items={subServices} />
@@ -237,18 +235,18 @@ const ServicePageTemplate = ({
                 key={index}
                 title={item.title}
                 // Mapping the old 'content' prop to 'subtext'
-                subtext={item.content} 
+                subtext={item.content}
                 // Ensure your subServices data includes icons, or this will be empty
-                Icon={item.icon} 
+                Icon={item.icon}
               />
             ))}
           </div>
-
         </div>
       </section>
 
       {/* 3. Featured Work (YouTube Grid) */}
-      <section className="relative z-5 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+
+      {featuredWork && Object.keys(featuredWork).length > 0 && <section className="relative z-5 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="text-center mb-16">
           <SectionTitle>Featured Work</SectionTitle>
           <p className="text-[var(--color-dark-text-secondary)] montserrat-regular text-lg">
@@ -257,7 +255,7 @@ const ServicePageTemplate = ({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {youtubeVideos.map((url, index) => (
+          {featuredWork.youtubeVideos?.map((url, index) => (
             <div
               key={index}
               className="
@@ -279,16 +277,15 @@ const ServicePageTemplate = ({
             </div>
           ))}
         </div>
-      </section>
+      </section>}
+
 
       {/* 4. Bottom CTA Section */}
       <section className="relative z-5 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start md:items-center">
           {/* Left Column: Title and Description */}
           <div className="text-left">
-            <SectionTitle align={"start"}>
-              {ctaTitle}
-            </SectionTitle>
+            <SectionTitle align={"start"}>{ctaTitle}</SectionTitle>
             <p
               className="
                   inter-regular
@@ -315,16 +312,16 @@ const ServicePageTemplate = ({
             <ContactCard
               icon={Mail}
               title="Email Us"
-              detail="info@aalishanproductions.com"
+              detail="info@aalishaanproductions.com"
               onClick={() =>
-                (window.location.href = "mailto:info@aalishanproductions.com")
+                (window.location.href = "mailto:info@aalishaanproductions.com")
               }
             />
-            <ContactCard
+            {/* <ContactCard
               icon={MapPin}
               title="Our Location"
               detail="123 Creative Street, Studio City, CA 91604"
-            />
+            /> */}
           </div>
         </div>
       </section>

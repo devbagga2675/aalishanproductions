@@ -43,29 +43,13 @@ const Footer = () => {
             {/* Column 1: Logo, Desc, Socials, Back to Top */}
             <div className="md:col-span-2">
               <h1 className="font-thunder-bold-lc text-2xl font-bold text-[var(--color-dark-text-primary)] mb-4">
-                AALISHAN PRODUCTIONS
+                AALISHAAN PRODUCTIONS
               </h1>
               <p className="text-base max-w-md">
                 Your one-stop partner for broadcast-quality video content, from
                 viral social clips to high-conversion product films.
               </p>
               <div className="mt-8 flex items-center gap-5">
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--color-dark-text-secondary)] transition-colors hover:text-[var(--color-dark-text-primary)]"
-                >
-                  <Twitter className="w-5 h-5" />
-                </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--color-dark-text-secondary)] transition-colors hover:text-[var(--color-dark-text-primary)]"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
                 <a
                   href="#"
                   target="_blank"
@@ -114,9 +98,12 @@ const Footer = () => {
             <div>
               <FooterTitle>Reach Out</FooterTitle>
               <div className="flex flex-col gap-3">
-                <FooterLink href="#"><SlideUpReveal>aalishanproductions@info.mail</SlideUpReveal></FooterLink>
-                <FooterLink href="#"><SlideUpReveal>9924102675</SlideUpReveal></FooterLink>
-
+                <FooterLink href="#">
+                  <SlideUpReveal>aalishaanproductions@info.mail</SlideUpReveal>
+                </FooterLink>
+                <FooterLink href="#">
+                  <SlideUpReveal>9924102675</SlideUpReveal>
+                </FooterLink>
               </div>
             </div>
           </div>
@@ -148,7 +135,7 @@ const Footer = () => {
             text-center sm:text-left
           "
             >
-              © 2025 Aalishan Productions. All Rights Reserved.
+              © 2025 Aalishaan Productions. All Rights Reserved.
             </p>
 
             {/* Vertical Divider (hidden on mobile, visible on desktop) */}
@@ -193,7 +180,7 @@ const Footer = () => {
             text-center sm:text-left
           "
             >
-              A {" "}
+              A{" "}
               <a
                 href="httpsIS://YOUR-URL-HERE.com" /* <-- Replace this URL */
                 target="_blank"
@@ -201,8 +188,8 @@ const Footer = () => {
                 className="underline font-semibold transition-colors hover:text-white"
               >
                 Mehta Overseas
-              </a>
-              {" "} Venture
+              </a>{" "}
+              Venture
             </p>
           </div>
         </div>

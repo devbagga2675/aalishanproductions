@@ -71,10 +71,9 @@ const SocialMediaPage = () => {
     ],
 
     // Placeholder IDs - Replace with your actual Shorts/Reels links if available on YouTube
-    youtubeVideos: [
-      "https://www.youtube.com/embed/5VuQREBijlI?si=yUaBzIKYDSge3Qr0",
-      "https://www.youtube.com/embed/5VuQREBijlI?si=yUaBzIKYDSge3Qr0",
-    ],
+    // featuredWork: {
+    //   youtubeVideos: [],
+    // },
 
     ctaTitle: "Ready to Grow Your Audience?",
   };
