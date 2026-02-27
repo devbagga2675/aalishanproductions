@@ -16,7 +16,8 @@ const ServicePill = ({ text }) => {
         text-sm                /* Smaller text size for a pill */
         tracking-wide          /* Slightly wider letter spacing */
         select-none            /* Prevent text selection */
-        whitespace-nowrap      /* Keep text on one line */
+        whitespace-normal
+        md:whitespace-normal      /* Keep text on one line */
       "
     >
       {/* Small accent dot */}

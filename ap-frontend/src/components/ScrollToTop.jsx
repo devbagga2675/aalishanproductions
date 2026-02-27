@@ -7,7 +7,7 @@ const ScrollToTop = () => {
   useEffect(() => {
     // 1. Basic Page Change: Reset to top immediately
     if (!hash) {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: "instant" });
       return;
     }
 
@@ -20,7 +20,7 @@ const ScrollToTop = () => {
       const element = document.getElementById(id);
 
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        element.scrollIntoView({ behavior: "instant" });
         return true; // Success
       }
       return false; // Not found yet

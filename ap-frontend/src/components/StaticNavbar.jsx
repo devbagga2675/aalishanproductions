@@ -1,16 +1,58 @@
-import React, { useState, useRef } from "react";
-import { NavLink, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import { Popover, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import { ChevronDown, Facebook, Instagram, ArrowUpRight } from "lucide-react";
+import {
+  ChevronDown,
+  Facebook,
+  Instagram,
+  ArrowUpRight,
+  Menu,
+  X,
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Import your reusable component
 import SlideUpReveal from "./SlideUpReveal";
 
 // Import the services data
-import { services } from "./../pages/services"; // Ensure this path matches your file structure
+import { services } from "./../pages/services";
 
 export default function StaticNavbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const location = useLocation();
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setIsMobileServicesOpen(false);
+  }, [location.pathname]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // 768px is the standard Tailwind 'md' breakpoint
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const baseLinkClasses =
     "text-base font-medium transition duration-300 ease-in-out cursor-pointer";
 
@@ -21,16 +63,14 @@ export default function StaticNavbar() {
         : "text-[var(--color-dark-text-secondary)] hover:text-[var(--color-dark-text-primary)]"
     }`;
 
-  // --- Hover Logic for Headless UI Popover ---
-  // We use a timeout to prevent flickering when moving mouse from button to panel
+  // --- Hover Logic for Headless UI Popover (Desktop) ---
   let timeout;
   const timeoutDuration = 200;
 
   const onHover = (open, close) => {
     clearTimeout(timeout);
     if (!open) {
-      close(false); // Ensure clean state
-      // Find the button and click it to open
+      close(false);
       document.getElementById("services-menu-button")?.click();
     }
   };
@@ -38,9 +78,47 @@ export default function StaticNavbar() {
   const onLeave = (open, close) => {
     timeout = setTimeout(() => {
       if (open) {
-        close(); // Close via the render prop function
+        close();
       }
     }, timeoutDuration);
+  };
+
+  // --- Framer Motion Variants ---
+  const drawerVariants = {
+    hidden: {
+      clipPath: "inset(0 0 100% 0)", // Invisible, clipped from bottom
+      transition: {
+        duration: 0.5,
+        ease: [0.76, 0, 0.24, 1],
+      },
+    },
+    visible: {
+      clipPath: "inset(0 0 0% 0)", // Fully revealed
+      transition: {
+        duration: 0.6,
+        ease: [0.76, 0, 0.24, 1],
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const fadeDownVariants = {
+    hidden: { y: -20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
+  };
+
+  const accordionVariants = {
+    hidden: { height: 0, opacity: 0 },
+    visible: {
+      height: "auto",
+      opacity: 1,
+      transition: { duration: 0.3, ease: "easeInOut" },
+    },
   };
 
   return (
@@ -53,26 +131,26 @@ export default function StaticNavbar() {
         h-24 
       "
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full relative z-50 bg-[var(--color-dark-bg-primary)] sm:bg-transparent">
         <div className="flex items-center justify-between h-full">
           {/* Logo Section */}
-          <div className="flex-shrink-0 flex gap-5 items-center ">
+          <div className="flex-shrink-0 flex gap-3 md:gap-5 items-center">
             <Link to="/">
               <h1
                 className="
                   font-thunder-bold-lc 
                   text-[var(--color-dark-text-primary)]
                   text-xl sm:text-2xl 
-                  font-bold tracking-wide  mt-1.5
+                  font-bold tracking-wide mt-1.5
                 "
               >
                 AALISHAAN PRODUCTIONS
               </h1>
             </Link>
-            <span className="h-10 bg-[var(--color-dark-border)] w-0.5"></span>
-            <div className="flex items-center gap-5">
+            <span className="h-10 bg-[var(--color-dark-border)] w-0.5 hidden sm:block"></span>
+            <div className="hidden sm:flex items-center gap-3 md:gap-5">
               <a
-                href="#"
+                href="https://www.instagram.com/aalishaan_production?igsh=MTMzcDc3b21xaWpyaA=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[var(--color-dark-text-secondary)] transition-colors hover:text-[var(--color-dark-text-primary)]"
@@ -80,7 +158,7 @@ export default function StaticNavbar() {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/share/1GZn7xdJ99/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[var(--color-dark-text-secondary)] transition-colors hover:text-[var(--color-dark-text-primary)]"
@@ -90,8 +168,26 @@ export default function StaticNavbar() {
             </div>
           </div>
 
+          {/* Mobile Menu Toggle Button */}
+          {/* Mobile Menu Toggle Button */}
+          <div className="flex md:hidden items-center">
+            {" "}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-[var(--color-dark-text-primary)] p-2 focus:outline-none"
+              aria-label="Toggle Mobile Menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-7 h-7" />
+              ) : (
+                <Menu className="w-7 h-7" />
+              )}
+            </button>
+          </div>
+
           {/* Desktop Navigation */}
-          <div className="hidden sm:block montserrat-regular h-full">
+          <div className="hidden md:block montserrat-regular h-full">
+            {" "}
             <div className="flex items-stretch md:items-center justify-center gap-8 h-full">
               {/* === Link 1: Home === */}
               <NavLink
@@ -108,7 +204,7 @@ export default function StaticNavbar() {
               <Popover className="relative lg:h-fit ">
                 {({ open, close }) => (
                   <div
-                  className="lg:h-fit"
+                    className="lg:h-fit"
                     onMouseEnter={() => onHover(open, close)}
                     onMouseLeave={() => onLeave(open, close)}
                   >
@@ -135,7 +231,7 @@ export default function StaticNavbar() {
 
                     <Transition
                       as={Fragment}
-                      show={open} // Controlled by hover logic triggering click
+                      show={open}
                       enter="transition ease-out duration-200"
                       enterFrom="opacity-0 translate-y-1"
                       enterTo="opacity-100 translate-y-0"
@@ -161,7 +257,7 @@ export default function StaticNavbar() {
                               <Link
                                 key={item.id}
                                 to={item.servicePath}
-                                onClick={() => close()} // Close menu on click
+                                onClick={() => close()}
                                 className="
                                   group flex items-center justify-between p-3 
                                   transition-all duration-300 ease-in-out
@@ -171,13 +267,8 @@ export default function StaticNavbar() {
                                   <p className="text-sm font-medium text-[var(--color-dark-text-primary)] group-hover:underline">
                                     {item.serviceTitle}
                                   </p>
-                                  {/* <p className="mt-1 text-xs text-[var(--color-dark-text-secondary)] line-clamp-1">
-                                    {item.serviceSubtitle}
-                                  </p> */}
                                 </div>
-
-                                {/* Sliding 45-degree arrow icon */}
-                                <ArrowUpRight className="w-5 h-5 text-[var(--color-dark-text-primary)] opacity-0 -translate-x-40 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0 " />
+                                <ArrowUpRight className="w-5 h-5 text-[var(--color-dark-text-primary)] opacity-0 -translate-x-40 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0" />
                               </Link>
                             ))}
                           </div>
@@ -203,6 +294,133 @@ export default function StaticNavbar() {
           </div>
         </div>
       </div>
+
+      {/* Mobile Navigation Drawer */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            variants={drawerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            className="
+              fixed top-0 left-0 w-full h-dvh
+              bg-[var(--color-dark-bg-primary)] 
+              pt-24 px-4 pb-10 
+              flex flex-col 
+              overflow-y-auto z-40
+              border-b border-[var(--color-dark-border)]
+              will-change-[clip-path]
+              
+            "
+          >
+            <div className="flex flex-col gap-6 mt-8 montserrat-regular">
+              {/* Mobile Link 1: Home */}
+              <motion.div variants={fadeDownVariants}>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    `text-xl font-regular transition-colors ${
+                      isActive
+                        ? "text-[var(--color-dark-text-primary)]"
+                        : "text-[var(--color-dark-text-secondary)]"
+                    }`
+                  }
+                >
+                  Home
+                </NavLink>
+              </motion.div>
+
+              {/* Mobile Link 2: Services Accordion */}
+              <motion.div variants={fadeDownVariants} className="flex flex-col">
+                <button
+                  onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                  className="flex items-center justify-between text-xl font-regular text-[var(--color-dark-text-secondary)] focus:outline-none"
+                >
+                  <span
+                    className={
+                      isMobileServicesOpen
+                        ? "text-[var(--color-dark-text-primary)]"
+                        : ""
+                    }
+                  >
+                    Services
+                  </span>
+                  <ChevronDown
+                    className={`w-6 h-6 transition-transform duration-300 ${
+                      isMobileServicesOpen
+                        ? "rotate-180 text-[var(--color-dark-text-primary)]"
+                        : ""
+                    }`}
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {isMobileServicesOpen && (
+                    <motion.div
+                      variants={accordionVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="hidden"
+                      className="overflow-hidden  flex flex-col gap-4 mt-5 pl-4 border-l-3 border-[var(--color-dark-border)]"
+                    >
+                      {services.map((item) => (
+                        <Link
+                          key={item.id}
+                          to={item.servicePath}
+                          className="text-lg text-[var(--color-dark-text-secondary)] hover:text-[var(--color-dark-text-primary)] transition-colors flex items-center justify-between"
+                        >
+                          {item.serviceTitle}
+                          <ArrowUpRight className="w-5 h-5 opacity-70" />
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+
+              {/* Mobile Link 3: The Team */}
+              <motion.div variants={fadeDownVariants}>
+                <NavLink
+                  to="/team"
+                  className={({ isActive }) =>
+                    `text-xl font-regular transition-colors ${
+                      isActive
+                        ? "text-[var(--color-dark-text-primary)]"
+                        : "text-[var(--color-dark-text-secondary)]"
+                    }`
+                  }
+                >
+                  The Team
+                </NavLink>
+              </motion.div>
+
+              {/* Mobile Socials */}
+              <motion.div
+                variants={fadeDownVariants}
+                className=" pt-6 border-t border-[var(--color-dark-border)] flex gap-6"
+              >
+                <a
+                  href="https://www.instagram.com/aalishaan_production?igsh=MTMzcDc3b21xaWpyaA=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--color-dark-text-secondary)] transition-colors hover:text-[var(--color-dark-text-primary)]"
+                >
+                  <Instagram className="w-6 h-6" />
+                </a>
+                <a
+                  href="https://www.facebook.com/share/1GZn7xdJ99/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--color-dark-text-secondary)] transition-colors hover:text-[var(--color-dark-text-primary)]"
+                >
+                  <Facebook className="w-6 h-6" />
+                </a>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

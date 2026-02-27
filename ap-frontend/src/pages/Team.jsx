@@ -1,137 +1,99 @@
-// import React from "react";
-// import { teamData } from "./teamData";
-
-// import { Scissors } from "lucide-react";
-
-// import TeamCard from "../components/teamCard";
-// import SectionTitle from "../components/SectionTitle";
-// import ServicePill from "../components/ServicePill";
-// import FeaturePill from "../components/FeaturePill";
-
-// const Team = () => {
-//   return (
-//     <div
-//       className="
-//         min-h-screen
-//         bg-[var(--color-dark-bg-primary)]
-//         max-w-7xl
-//         mx-auto
-//         px-4 sm:px-6 lg:px-8
-//         py-32 /* py-24 for navbar + py-8 for padding */
-//       "
-//     >
-//       <section>
-//         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-12">
-//           <div className="md:col-span-7">
-//             <div className="md:sticky md:top-32 flex flex-col gap-8">
-//               {" "}
-//               <div className="top-content">
-//                 <div className="mb-2">
-//                   <ServicePill text={"The Team"} />
-//                 </div>
-//                 <SectionTitle>Focus on Dedication and Quality</SectionTitle>
-//                 <p
-//                   className="
-//                   inter-regular
-//                   max-w-xl
-//                   text-lg text-[var(--color-dark-text-secondary)]
-//                   md:text-xl
-//                 "
-//                 >
-//                   We are professional filmmakers dedicated entirely to the
-//                   craft. Our passion for masterful editing and technical
-//                   shooting is the guarantee behind your content's quality.
-//                 </p>
-//               </div>
-//               <div className="bottom-content flex flex-col gap-4">
-//                 <FeaturePill
-//                   icon={Scissors}
-//                   text="Dedicated Crew"
-//                 />
-//                 <FeaturePill
-//                   icon={Scissors}
-//                   text="Refined Finish"
-//                 />
-//                 <FeaturePill
-//                   icon={Scissors}
-//                   text="Transparent Process"
-//                 />
-//               </div>
-//             </div>
-//           </div>
-
-//           <div className="md:col-span-5">
-//             <div className="grid grid-cols-1 sm:grid-cols-1 gap-x-8 gap-y-10">
-//               {teamData.map((member) => (
-//                 <TeamCard key={member.id} member={member} />
-//               ))}
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-//     </div>
-//   );
-// };
-
-// export default Team;
-
 import React from "react";
+import { motion } from "framer-motion";
 import { teamData } from "./teamData";
-
 import { Scissors } from "lucide-react";
-
 import TeamCard from "../components/teamCard";
 import SectionTitle from "../components/SectionTitle";
 import ServicePill from "../components/ServicePill";
 import FeaturePill from "../components/FeaturePill";
+import usePageMeta from "../hooks/usePageMeta";
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  show: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1], delay },
+  }),
+};
+
+const staggerContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
+};
+
+const staggerItem = {
+  hidden: { opacity: 0, y: 22 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 const Team = () => {
+  usePageMeta(
+    "Meet the Team | Aalishaan Productions",
+    "Meet the creative team behind Aalishaan Productions — dedicated filmmakers, editors, and strategists passionate about delivering broadcast-quality content for brands and creators.",
+  );
   return (
-    <div
-      className="
-        min-h-screen 
-        bg-[var(--color-dark-bg-primary)] 
-        max-w-7xl 
-        mx-auto 
-        px-4 sm:px-6 lg:px-8 
-        py-32 /* py-24 for navbar + py-8 for padding */
-      "
-    >
+    <div className="min-h-screen bg-(--color-dark-bg-primary) max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
       <section>
         <div className="flex flex-col gap-16 md:gap-20">
+          {/* Header */}
           <div className="w-full">
             <div className="max-w-5xl mx-auto flex flex-col gap-8">
               <div className="top-content text-center">
-                <div className="mb-2">
-                  <ServicePill text={"The Team"}/>
-                </div>
-                <SectionTitle align={"center"} className="md:text-center">
-                  Focus on Dedication and Quality
-                </SectionTitle>
-                <p
-                  className="
-                    inter-regular
-                    w-full
-                    text-lg text-[var(--color-dark-text-secondary)] 
-                    md:text-xl
-                  "
+                <motion.div
+                  className="mb-2"
+                  variants={fadeUp}
+                  custom={0}
+                  initial="hidden"
+                  animate="show"
+                >
+                  <ServicePill text="The Team" />
+                </motion.div>
+
+                <motion.div
+                  variants={fadeUp}
+                  custom={0.12}
+                  initial="hidden"
+                  animate="show"
+                >
+                  <SectionTitle align="center" className="md:text-center">
+                    Focus on Dedication and Quality
+                  </SectionTitle>
+                </motion.div>
+
+                <motion.p
+                  className="inter-regular w-full text-lg text-(--color-dark-text-secondary) md:text-xl"
+                  variants={fadeUp}
+                  custom={0.24}
+                  initial="hidden"
+                  animate="show"
                 >
                   We are professional filmmakers dedicated entirely to the
                   craft. Our passion for masterful editing and technical
                   shooting is the guarantee behind your content's quality.
-                </p>
+                </motion.p>
               </div>
             </div>
           </div>
 
-          {/* 2. Team Cards Section (3 cards per row) */}
+          {/* Team Cards */}
           <div className="w-full">
-            {/* Grid setup for 3 cards per row: 1 on mobile, 2 on tablet, 3 on desktop */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-10">
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-10"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-80px" }}
+            >
               {teamData.map((member) => (
-                <TeamCard key={member.id} member={member} />
+                <motion.div key={member.id} variants={staggerItem}>
+                  <TeamCard member={member} />
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

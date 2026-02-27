@@ -12,8 +12,12 @@ import {
   Layers,
   Calendar,
 } from "lucide-react";
-
+import usePageMeta from "../../hooks/usePageMeta";
 const BrandingPage = () => {
+  usePageMeta(
+    "Social Brand Building | Grow Your Online Presence | Aalishaan Productions",
+    "Strategic social brand building services to grow your visibility, authority, and audience across platforms. We craft your brand identity, messaging, and content strategy for long-term growth.",
+  );
   const BrandingData = {
     heroTitle: "Branding & Social Brand Building",
 
@@ -44,12 +48,12 @@ const BrandingPage = () => {
       },
     ],
 
-    featuredWork: {
-      youtubeVideos: [
-        "https://www.youtube.com/embed/placeholder_branding_1",
-        "https://www.youtube.com/embed/placeholder_branding_2",
-      ],
-    },
+    // featuredWork: {
+    //   youtubeVideos: [
+    //     "https://www.youtube.com/embed/placeholder_branding_1",
+    //     "https://www.youtube.com/embed/placeholder_branding_2",
+    //   ],
+    // },
 
     ctaTitle: "Ready to build a powerful digital brand presence?",
     ctaLink: "/contact",
@@ -65,6 +69,7 @@ const BrandingPage = () => {
       youtubeVideos={BrandingData.youtubeVideos}
       ctaTitle={BrandingData.ctaTitle}
       ctaLink={BrandingData.ctaLink}
+      heroImage="/assets/stock/png/stock_socialbrandbuilding.png"
     />
   );
 };

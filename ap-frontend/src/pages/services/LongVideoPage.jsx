@@ -1,8 +1,18 @@
 import React from "react";
 import ServicePageTemplate from "../../templates/ServicePageTemplate";
-import { MonitorPlay, Mic, MessageSquareQuote, BookOpen, Video } from "lucide-react";
-
+import {
+  MonitorPlay,
+  Mic,
+  MessageSquareQuote,
+  BookOpen,
+  Video,
+} from "lucide-react";
+import usePageMeta from "../../hooks/usePageMeta";
 const LongVideoPage = () => {
+  usePageMeta(
+    "Long-Form Video Production | YouTube & Promotional Films | Aalishaan Productions",
+    "Expert long-form video production for YouTube channels, promotional films, and branded documentaries. We handle scripting, shooting, and editing to deliver polished, high-retention video content.",
+  );
   const content = {
     heroTitle: "Cinematic Long-Form Storytelling",
     // Derived from Brochure Page 5: "Cinematic, story-driven films that build your brand..."
@@ -38,17 +48,22 @@ const LongVideoPage = () => {
       },
     ],
 
-    featuredWork: {
-      youtubeVideos: [
-        "https://youtu.be/vaBxPFU47HY?si=ht8VNeudVKtBPELv",
-        "https://www.youtube.com/embed/placeholder_writing_2",
-      ],
-    },
+    // featuredWork: {
+    //   youtubeVideos: [
+    //     "https://youtu.be/vaBxPFU47HY?si=ht8VNeudVKtBPELv",
+    //     "https://www.youtube.com/embed/placeholder_writing_2",
+    //   ],
+    // },
 
     ctaTitle: "Ready to Tell Your Story?",
   };
 
-  return <ServicePageTemplate {...content} />;
+  return (
+    <ServicePageTemplate
+      {...content}
+      heroImage="/assets/stock/png/longvideos_stock.png"
+    />
+  );
 };
 
 export default LongVideoPage;

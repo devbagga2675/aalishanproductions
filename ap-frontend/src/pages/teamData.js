@@ -3,7 +3,7 @@ export const teamData = [
   {
     id: 1,
     name: "Dhairya Mehta",
-    designation: "Business Head / Director",
+    designation: "CEO",
     imageUrl:
       // Reusing original image URL for Dhairya Mehta
       // "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&h=800&auto=format&fit=crop",
@@ -21,7 +21,7 @@ export const teamData = [
   {
     id: 2,
     name: "Pravin Prajapati",
-    designation: "Operations & Creative Lead",
+    designation: "COO",
     imageUrl:
       // Using a new relevant image for a Creative/Operations Lead
       "public/assets/teamImage_pravinPrajapati.jpg",
@@ -37,7 +37,7 @@ export const teamData = [
   {
     id: 3,
     name: "Dev Bagga",
-    designation: "Full-Stack Developer",
+    designation: "CTO",
     imageUrl:
       // Using a new relevant image for a Developer
       "public/assets/teamImage_devBagga.jpg",

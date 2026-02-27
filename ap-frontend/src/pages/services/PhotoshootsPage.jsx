@@ -38,8 +38,8 @@ const PhotoshootsPage = () => {
     ],
 
     // Ideally, replace these with BTS videos of a photoshoot or a slideshow portfolio
-    featuredWork: {
-    },
+    // featuredWork: {
+    // },
 
     ctaTitle: "Need Professional Photography?",
     ctaLink: "#contact",

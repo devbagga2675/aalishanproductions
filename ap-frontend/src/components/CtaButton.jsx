@@ -42,8 +42,9 @@ const CtaBase = ({
     shadow-lg transition-all duration-300 ease-in-out max-w-fit
     ${isPrimary 
       ? `bg-[var(--color-dark-accent-primary)] group-hover:bg-[var(--color-dark-text-primary)]` 
-      : `bg-transparent border border-[var(--color-dark-text-secondary)] group-hover:bg-[var(--color-dark-accent-primary)]`
+      : `bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20`
     }
+    ${isPrimary ? 'text-[var(--color-dark-bg-secondary)]' : 'text-white'}
   `;
 
   const titleClasses = `

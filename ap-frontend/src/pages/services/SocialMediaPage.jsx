@@ -8,8 +8,13 @@ import {
   Utensils,
   Briefcase,
 } from "lucide-react";
+import usePageMeta from "../../hooks/usePageMeta";
 
 const SocialMediaPage = () => {
+  usePageMeta(
+    "Social Media Video Production | Aalishaan Productions",
+    "Professional social media video production for Instagram Reels, YouTube Shorts, and TikTok. We create viral-ready, story-driven short-form content that grows your following and drives engagement.",
+  );
   const content = {
     heroTitle: "Social Media Video Production",
     heroDescription:
@@ -70,15 +75,23 @@ const SocialMediaPage = () => {
       },
     ],
 
-    // Placeholder IDs - Replace with your actual Shorts/Reels links if available on YouTube
-    // featuredWork: {
-    //   youtubeVideos: [],
-    // },
+    featuredWork: {
+      youtubeVideos: [
+        "https://www.youtube.com/embed/1pxYFvQC_ik",
+        "https://www.youtube.com/embed/bcyeYufQcp0",
+        "https://www.youtube.com/embed/IgDg7bbTrps",
+      ],
+    },
 
     ctaTitle: "Ready to Grow Your Audience?",
   };
 
-  return <ServicePageTemplate {...content} />;
+  return (
+    <ServicePageTemplate
+      {...content}
+      heroImage="/assets/stock/png/stock_socialvideos1.png"
+    />
+  );
 };
 
 export default SocialMediaPage;

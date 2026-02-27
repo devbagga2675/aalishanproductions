@@ -1,34 +1,17 @@
 import React from "react";
-import { Twitter, Linkedin, Instagram, Facebook, ArrowUp } from "lucide-react";
-// 1. Import your secondary button
+import { Link } from "react-router-dom";
+import { Instagram, Facebook, ArrowUp } from "lucide-react";
 import { CtaButtonSecondary } from "./CtaButton";
 import SlideUpReveal from "./SlideUpReveal";
 
-// Internal component for styling footer links
-const FooterLink = ({ href, children }) => (
-  <a
-    href={href}
-    className="
-      text-sm 
-      text-[var(--color-dark-text-secondary)] 
-      transition-colors 
-      hover:text-[var(--color-dark-text-primary)] 
-      hover:underline
-    "
-  >
-    {children}
-  </a>
-);
+const FooterLink = ({ href, to, children }) => {
+  const cls = "text-sm text-[var(--color-dark-text-secondary)] transition-colors hover:text-[var(--color-dark-text-primary)] hover:underline";
+  if (to) return <Link to={to} className={cls}>{children}</Link>;
+  return <a href={href} className={cls}>{children}</a>;
+};
 
-// Internal component for styling footer column titles
 const FooterTitle = ({ children }) => (
-  <h3
-    className="
-    mb-4 text-sm font-semibold 
-    uppercase text-[var(--color-dark-text-primary)] 
-    tracking-wider
-  "
-  >
+  <h3 className="mb-4 text-sm font-semibold uppercase text-[var(--color-dark-text-primary)] tracking-wider">
     {children}
   </h3>
 );
@@ -36,157 +19,106 @@ const FooterTitle = ({ children }) => (
 const Footer = () => {
   return (
     <footer className="w-full montserrat-regular">
-      {/* Main Footer Section */}
       <div className="bg-[var(--color-dark-bg-secondary)] text-[var(--color-dark-text-secondary)]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-            {/* Column 1: Logo, Desc, Socials, Back to Top */}
-            <div className="md:col-span-2">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+
+            {/* Col 1: Brand */}
+            <div className="md:col-span-4">
               <h1 className="font-thunder-bold-lc text-2xl font-bold text-[var(--color-dark-text-primary)] mb-4">
                 AALISHAAN PRODUCTIONS
               </h1>
-              <p className="text-base max-w-md">
+              <p className="text-base max-w-md mb-8">
                 Your one-stop partner for broadcast-quality video content, from
                 viral social clips to high-conversion product films.
               </p>
-              <div className="mt-8 flex items-center gap-5">
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--color-dark-text-secondary)] transition-colors hover:text-[var(--color-dark-text-primary)]"
-                >
+
+              {/* Divider */}
+              <div className="w-12 h-px bg-[var(--color-dark-accent-primary)] mb-8 opacity-60" />
+
+              {/* Socials */}
+              <div className="flex items-center gap-5 mb-8">
+                <a href="https://www.instagram.com/aalishaan_production?igsh=MTMzcDc3b21xaWpyaA==" target="_blank" rel="noopener noreferrer"
+                  className="text-[var(--color-dark-text-secondary)] transition-colors hover:text-[var(--color-dark-text-primary)]">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--color-dark-text-secondary)] transition-colors hover:text-[var(--color-dark-text-primary)]"
-                >
+                <a href="https://www.facebook.com/share/1GZn7xdJ99/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"
+                  className="text-[var(--color-dark-text-secondary)] transition-colors hover:text-[var(--color-dark-text-primary)]">
                   <Facebook className="w-5 h-5" />
                 </a>
               </div>
 
-              {/* 2. Replaced custom button with CtaButtonSecondary */}
-              <div className="mt-8">
-                <CtaButtonSecondary
-                  href="#"
-                  title="Back to top" // Corrected typo
-                  Icon={ArrowUp}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                />
-              </div>
+              <CtaButtonSecondary
+                href="#"
+                title="Back to top"
+                Icon={ArrowUp}
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "instant" });
+                }}
+              />
             </div>
 
-            {/* Column 2: Site Map */}
-            <div>
-              <FooterTitle>Site Map</FooterTitle>
+            {/* Spacer */}
+
+            {/* Col 2: Pages */}
+            <div className="md:col-span-2">
+              <FooterTitle>Pages</FooterTitle>
               <div className="flex flex-col gap-3">
-                <FooterLink href="#">Home</FooterLink>
-                <FooterLink href="#">YT Content</FooterLink>
-                <FooterLink href="#">Social Media Content</FooterLink>
-                <FooterLink href="#">The Team</FooterLink>
-                <FooterLink href="#">Contact Us</FooterLink>
+                <FooterLink to="/">Home</FooterLink>
+                <FooterLink to="/team">The Team</FooterLink>
               </div>
             </div>
 
-            {/* Column 3: Contact*/}
-            <div>
+            {/* Col 3: Services */}
+            <div className="md:col-span-2">
+              <FooterTitle>Services</FooterTitle>
+              <div className="flex flex-col gap-3">
+                <FooterLink to="/services/social-media">Social Media Videos</FooterLink>
+                <FooterLink to="/services/long-videos">Long Form Videos</FooterLink>
+                <FooterLink to="/services/web-development">Web Development</FooterLink>
+                <FooterLink to="/services/social-brand-building">Brand Building</FooterLink>
+                <FooterLink to="/services/content-writing">Content Writing</FooterLink>
+              </div>
+            </div>
+
+            {/* Col 4: Contact */}
+            <div className="md:col-span-3">
               <FooterTitle>Reach Out</FooterTitle>
               <div className="flex flex-col gap-3">
-                <FooterLink href="#">
-                  <SlideUpReveal>aalishaanproductions@info.mail</SlideUpReveal>
+                <FooterLink href="mailto:aalishaanproductions@gmail.com">
+                  <SlideUpReveal>aalishaanproductions@gmail.com</SlideUpReveal>
                 </FooterLink>
-                <FooterLink href="#">
-                  <SlideUpReveal>9924102675</SlideUpReveal>
+                <FooterLink href="tel:+916351887341">
+                  <SlideUpReveal>+916351887341</SlideUpReveal>
                 </FooterLink>
               </div>
             </div>
+
           </div>
         </div>
       </div>
 
       {/* Copyright Bar */}
       <div className="bg-[var(--color-dark-accent-primary)] py-3">
-        {" "}
-        {/* Changed py-4 to py-3 for 'compact' */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* This flex container handles the layout:
-          - On mobile: stacks the two credits (flex-wrap)
-          - On desktop: puts them side-by-side with the divider (sm:flex-nowrap)
-          - Centers everything (justify-center)
-        */}
-          <div
-            className="
-          flex flex-wrap sm:flex-nowrap 
-          items-center justify-center 
-          gap-x-4 gap-y-1
-        "
-          >
-            {/* Credit 1: Copyright */}
-            <p
-              className="
-            text-sm font-medium 
-            text-[var(--color-dark-bg-primary)] 
-            text-center sm:text-left
-          "
-            >
+          <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-x-4 gap-y-1">
+            <p className="text-sm font-medium text-[var(--color-dark-bg-primary)] text-center sm:text-left">
               © 2025 Aalishaan Productions. All Rights Reserved.
             </p>
-
-            {/* Vertical Divider (hidden on mobile, visible on desktop) */}
-            <div
-              className="
-            hidden sm:block 
-            h-4 w-px 
-            bg-[var(--color-dark-bg-primary)] 
-            opacity-50
-          "
-            ></div>
-
-            <p
-              className="
-            text-sm font-medium 
-            text-[var(--color-dark-bg-primary)] 
-            text-center sm:text-left
-          "
-            >
+            <div className="hidden sm:block h-4 w-px bg-[var(--color-dark-bg-primary)] opacity-50" />
+            <p className="text-sm font-medium text-[var(--color-dark-bg-primary)] text-center sm:text-left">
               Designed and developed by{" "}
-              <a
-                href="https://devbagga-portfolio.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline font-semibold transition-colors hover:text-white"
-              >
+              <a href="https://devbagga-portfolio.vercel.app" target="_blank" rel="noopener noreferrer"
+                className="underline font-semibold transition-colors hover:text-white">
                 Dev Bagga
               </a>
             </p>
-            <div
-              className="
-            hidden sm:block 
-            h-4 w-px 
-            bg-[var(--color-dark-bg-primary)] 
-            opacity-50
-          "
-            ></div>
-            <p
-              className="
-            text-sm font-medium 
-            text-[var(--color-dark-bg-primary)] 
-            text-center sm:text-left
-          "
-            >
+            <div className="hidden sm:block h-4 w-px bg-[var(--color-dark-bg-primary)] opacity-50" />
+            <p className="text-sm font-medium text-[var(--color-dark-bg-primary)] text-center sm:text-left">
               A{" "}
-              <a
-                href="httpsIS://YOUR-URL-HERE.com" /* <-- Replace this URL */
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline font-semibold transition-colors hover:text-white"
-              >
+              <a href="#" target="_blank" rel="noopener noreferrer"
+                className="underline font-semibold transition-colors hover:text-white">
                 Mehta Overseas
               </a>{" "}
               Venture

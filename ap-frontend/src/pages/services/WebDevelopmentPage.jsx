@@ -1,8 +1,12 @@
 import React from "react";
 import ServicePageTemplate from "../../templates/ServicePageTemplate";
 import { Code, Smartphone, Monitor, Database, Layout } from "lucide-react"; // Import relevant icons
-
+import usePageMeta from "../../hooks/usePageMeta";
 const WebDevelopmentPage = () => {
+  usePageMeta(
+    "Website & App Development | UI/UX Design | Aalishaan Productions",
+    "Full-stack website and application development with modern UI/UX design. We build fast, responsive, conversion-optimized digital experiences tailored to your brand.",
+  );
   // Define content based on your brochure (Page 8)
   const content = {
     heroTitle: "Engineering Flawless User Journeys",
@@ -51,14 +55,19 @@ const WebDevelopmentPage = () => {
       },
     ],
 
-    featuredWork: {
-      youtubeVideos: [],
-    },
+    // featuredWork: {
+    //   youtubeVideos: [],
+    // },
 
     ctaTitle: "Ready to Build Your Digital Presence?",
   };
 
-  return <ServicePageTemplate {...content} />;
+  return (
+    <ServicePageTemplate
+      {...content}
+      heroImage="/assets/stock/png/webdev_stock.png"
+    />
+  );
 };
 
 export default WebDevelopmentPage;

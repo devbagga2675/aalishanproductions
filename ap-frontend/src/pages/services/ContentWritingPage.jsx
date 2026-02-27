@@ -11,8 +11,13 @@ import {
   Search,
   Users,
 } from "lucide-react";
-
+import usePageMeta from "../../hooks/usePageMeta";
+usePageMeta;
 const ContentWritingPage = () => {
+  usePageMeta(
+    "Content Writing Services | Scripts, Blogs & Captions | Aalishaan Productions",
+    "Professional content writing for scripts, blogs, captions, and brand messaging. SEO-optimized, platform-ready copy that builds authority and keeps your audience engaged.",
+  );
   const contentWritingData = {
     heroTitle: "Content Writing & Storytelling",
     // Based on "We create the words that power your visuals"
@@ -66,12 +71,12 @@ const ContentWritingPage = () => {
     ],
 
     // Placeholder for relevant work or generic writing reels
-    featuredWork: {
-      youtubeVideos: [
-        "https://www.youtube.com/embed/placeholder_writing_1",
-        "https://www.youtube.com/embed/placeholder_writing_2",
-      ],
-    },
+    // featuredWork: {
+    //   youtubeVideos: [
+    //     "https://www.youtube.com/embed/placeholder_writing_1",
+    //     "https://www.youtube.com/embed/placeholder_writing_2",
+    //   ],
+    // },
 
     ctaTitle: "Ready to power your visuals with words?",
     ctaLink: "/contact",
@@ -87,6 +92,7 @@ const ContentWritingPage = () => {
       youtubeVideos={contentWritingData.youtubeVideos}
       ctaTitle={contentWritingData.ctaTitle}
       ctaLink={contentWritingData.ctaLink}
+      heroImage="/assets/stock/png/stock_contentwriting.png"
     />
   );
 };

@@ -2,17 +2,18 @@ import React from "react";
 
 const ServiceDetailCard = ({ title, subtext, Icon }) => {
   return (
-    <div
-      className="
-        h-72 max-w-sm
-        group relative flex flex-col justify-between p-6 
-        rounded-2xl border border-2 border-[var(--color-dark-border)] 
-        bg-gradient-to-br from-[var(--color-dark-bg-secondary)] to-[var(--color-dark-bg-primary)] 
-        transition-all duration-300 ease-out
-        hover:-translate-y-1 hover:border-[var(--color-dark-accent-primary)] 
-        hover:shadow-lg hover:shadow-[var(--color-dark-accent-primary)]/10
-      "
-    >
+<div
+  className="
+    h-72
+    w-full
+    group relative flex flex-col justify-between p-6 
+    rounded-2xl border-2 border-(--color-dark-border) 
+    bg-linear-to-br from-(--color-dark-bg-secondary) to-(--color-dark-bg-primary) 
+    transition-all duration-300 ease-out
+    hover:-translate-y-1 hover:border-(--color-dark-accent-primary) 
+    hover:shadow-lg hover:shadow-(--color-dark-accent-primary)/10
+  "
+>
       {/* Icon Container */}
       <div
         className="

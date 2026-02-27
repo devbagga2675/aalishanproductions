@@ -5,14 +5,14 @@ export const services = [
     serviceTitle: "Social Media Videos",
     serviceSubtitle: "Viral-ready reels for Instagram & YouTube.",
     servicePath: "services/social-media", // Updated to match rootRoutes
-    // serviceImageurl: "/example/url"
+    serviceImageurl: "/assets/stock/stock_socialvideos.webp"
   },
   {
     id: 2,
     serviceTitle: "Long-Form Videos",
     serviceSubtitle: "Youtube videos, promotional films, and more.",
     servicePath: "services/long-videos", // Matches rootRoutes
-    // serviceImageurl: "/example/url"
+    serviceImageurl: "/assets/stock/stock_longvideos.webp"
   },
   // {
   //     id: 3,
@@ -33,20 +33,20 @@ export const services = [
     serviceTitle: "Website & Application Development",
     serviceSubtitle: "Full-stack tech solutions and UI/UX design.",
     servicePath: "services/web-development", // Updated to match rootRoutes
-    // serviceImageurl: "/example/url"
+    serviceImageurl: "/assets/stock/stock_webdev.webp"
   },
   {
     id: 4,
     serviceTitle: "Social Brand Building",
     serviceSubtitle: "Scripts, blogs, captions, and brand messaging.",
     servicePath: "services/social-brand-building", // Updated to match rootRoutes
-    // serviceImageurl: "/example/url"
+    serviceImageurl: "/assets/stock/stock_socialbrandbuilding.webp"
   },
   {
     id: 5,
     serviceTitle: "Content Writing",
     serviceSubtitle: "Building perception, visibility, and long-term brand growth across platforms.",
     servicePath: "services/content-writing", // Updated to match rootRoutes
-    // serviceImageurl: "/example/url"
+    serviceImageurl: "/assets/stock/stock_contentwriting.webp"
   },
 ];

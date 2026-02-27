@@ -8,7 +8,7 @@ const FeaturePill = ({ icon: IconComponent, text }) => {
         inline-flex
         items-center
         justify-start         
-        ps-4 py-4 pe-8         
+        ps-2 md:ps-4 py-2 md:py-4 pe-4 md:pe-8         
         rounded-full          
         bg-[var(--color-dark-bg-secondary)]
         border                
@@ -16,7 +16,7 @@ const FeaturePill = ({ icon: IconComponent, text }) => {
         
         text-[var(--color-dark-text-primary)] 
         montserrat-medium
-        text-xs md:text-sm              
+        text-xs sm:text-sm md:text-md              
         whitespace-nowrap     
         shadow-md             
         transition-all duration-300 ease-in-out
