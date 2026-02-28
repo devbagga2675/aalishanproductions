@@ -7,7 +7,7 @@ export const teamData = [
     imageUrl:
       // Reusing original image URL for Dhairya Mehta
       // "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&h=800&auto=format&fit=crop",
-      "public/assets/teamImage_dhairyaMehta.jpg",
+      "/assets/team/teamImage_dhairyaMehta.jpg",
     roles: [
       "Client Communication",
       "Strategy & Ideas",
@@ -24,7 +24,7 @@ export const teamData = [
     designation: "COO",
     imageUrl:
       // Using a new relevant image for a Creative/Operations Lead
-      "public/assets/teamImage_pravinPrajapati.jpg",
+      "assets/team/teamImage_PravinPrajapati.jpg",
     roles: [
       "Shooting & Execution",
       "Editing & Post-Production",
@@ -40,7 +40,7 @@ export const teamData = [
     designation: "CTO",
     imageUrl:
       // Using a new relevant image for a Developer
-      "public/assets/teamImage_devBagga.jpg",
+      "/assets/team/teamImage_devBagga.jpg",
     roles: [
       "Website Development",
       "Application Development",
