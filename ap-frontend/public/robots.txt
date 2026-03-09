@@ -1,0 +1,9 @@
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.aalishaanproductions.com/
+
+# Sitemaps
+Sitemap: https://www.aalishaanproductions.com/sitemap.xml
